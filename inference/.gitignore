@@ -1,0 +1,5 @@
+# Weights are linked/copied by prepare_assets.sh, never committed.
+checkpoints/
+outputs/
+__pycache__/
+*.py[cod]
