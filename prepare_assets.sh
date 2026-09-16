@@ -2,16 +2,21 @@
 # Link (or copy) the four checkpoints that text-to-motion inference needs.
 #
 # Usage:
-#   ./prepare_assets.sh            # symlink the checkpoint tree (default)
-#   ./prepare_assets.sh --copy     # copy the four needed directories instead
+#   ./prepare_assets.sh                                  # symlink (default)
+#   ./prepare_assets.sh --copy                           # copy instead
+#   MOVT_SOURCE_ROOT=/path/to/checkout ./prepare_assets.sh
 #
-# Checkpoints are weights, not code, so they are kept out of this folder. Both
-# modes need pre-trained weights to already exist in the parent MoVT checkout.
+# Checkpoints are weights, not code, so they are kept out of git. This script
+# is for people who already have a MoVT training checkout and would rather link
+# its weights into ./checkpoints than download a second copy.
+#
+# Without MOVT_SOURCE_ROOT the source defaults to this repository, so the script
+# is a no-op when ./checkpoints is already populated.
 
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SOURCE_ROOT="${MOVT_SOURCE_ROOT:-$(dirname "$HERE")}"
+SOURCE_ROOT="${MOVT_SOURCE_ROOT:-$HERE}"
 SOURCE_CKPT="$SOURCE_ROOT/checkpoints/t2m"
 TARGET_CKPT="$HERE/checkpoints/t2m"
 
