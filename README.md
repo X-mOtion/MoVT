@@ -6,7 +6,7 @@
 
 **Code release: Coming soon.**
 
-[Project page](https://x-motion.github.io/MoVT-website/) · [Paper](https://x-motion.github.io/MoVT-website/paper.pdf)
+[Project page](https://x-motion.github.io/MoVT-website/) · [Paper](https://arxiv.org/abs/2609.14965)
 
 MoVT enriches a 3D motion vocabulary with motion patterns learned from human action videos. It aligns 2D and 3D codebooks and uses shared token indices for text-conditioned motion generation.
 
