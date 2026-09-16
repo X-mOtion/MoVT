@@ -8,7 +8,8 @@ from `infer_text_2d3d.py`.
 ## Quick start
 
 ```bash
-./prepare_assets.sh          # link the 4 needed checkpoints from ../checkpoints
+# 1. get the checkpoints (see the next section), then:
+./prepare_assets.sh          # or skip this if you unpacked into ./checkpoints
 python infer_text_2d3d.py --text "a person walks forward and waves with their right hand"
 python selfcheck.py          # arrays + video invariant check, <1 min on a GPU
 ```
@@ -16,6 +17,43 @@ python selfcheck.py          # arrays + video invariant check, <1 min on a GPU
 That writes `motion_2d3d.mp4` next to the `.npy` outputs: the left panel is the
 2D tokenizer output, the right panel is the 3D motion, animated in lockstep.
 Pass `--no_video` to skip rendering.
+
+## Checkpoints
+
+Inference needs four checkpoints, 774 MB in total. They are not stored in this
+repository.
+
+| checkpoint | role |
+| --- | --- |
+| `rvq_name` | 3D RVQ-VAE tokenizer, 66D, 6 quantizer layers |
+| `rvq_hml3d_xy_2d_supervised_align66_m4096e3_ce2` | aligned 2D tokenizer, 44D, 1 layer |
+| `mtrans_rvq_name_66d_..._rvq6ns` | masked transformer, predicts the shared base tokens |
+| `rtrans_rvq_name_66d_..._sw` | residual transformer, fills RVQ layers 1-5 |
+
+### Download
+
+- **Baidu Netdisk** — [MoVT-inference-ckpt.zip](https://pan.baidu.com/s/1Zn3fAO1a8A3Xj1-nkVfSWw?pwd=pejb)
+  (extraction code: `pejb`)
+
+### Install
+
+The share contains `MoVT-inference-ckpt.zip`. Unpack it into *this* directory
+so that `inference/checkpoints/t2m/` ends up next to `movt/`:
+
+```bash
+cd inference
+unzip MoVT-inference-ckpt.zip        # creates ./checkpoints, ./SHA256SUMS.txt, ./README.md
+cd checkpoints && sha256sum -c ../SHA256SUMS.txt && cd ..
+python infer_text_2d3d.py --text "a person walks forward and waves"
+```
+
+`--checkpoints_dir` defaults to `checkpoints`, so nothing else needs setting.
+`prepare_assets.sh` is only for people who already have a MoVT training
+checkout; if you would rather keep the weights at the repository root, put them
+in `MoVT/checkpoints/` and run `MOVT_SOURCE_ROOT=.. ./prepare_assets.sh`.
+
+The archive's own `README.md` repeats these steps and lists the SHA256 of each
+weight file.
 
 ## Layout
 

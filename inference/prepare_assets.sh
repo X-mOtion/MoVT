@@ -32,7 +32,14 @@ fi
 
 if [[ ! -d "$SOURCE_CKPT" ]]; then
   echo "checkpoint source not found: $SOURCE_CKPT" >&2
-  echo "set MOVT_SOURCE_ROOT to the MoVT checkout that holds checkpoints/." >&2
+  echo >&2
+  echo "This script links checkpoints from an existing MoVT training checkout." >&2
+  echo "If you do not have one, download the inference checkpoints (774 MB):" >&2
+  echo "  https://pan.baidu.com/s/1Zn3fAO1a8A3Xj1-nkVfSWw?pwd=pejb  (code: pejb)" >&2
+  echo "and unpack MoVT-inference-ckpt.zip into this directory; then you can" >&2
+  echo "run infer_text_2d3d.py directly and this script is not needed." >&2
+  echo >&2
+  echo "Otherwise set MOVT_SOURCE_ROOT to the checkout that holds checkpoints/." >&2
   exit 1
 fi
 
