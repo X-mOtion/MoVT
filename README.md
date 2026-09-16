@@ -60,8 +60,8 @@ repository.
 
 ### Download
 
-- **Baidu Netdisk** — [MoVT-inference-ckpt.zip](https://pan.baidu.com/s/1Zn3fAO1a8A3Xj1-nkVfSWw?pwd=pejb)
-  (extraction code: `pejb`)
+- **Baidu Netdisk** — [MoVT-inference-ckpt.zip](https://pan.baidu.com/s/16YORJ0nqQUXoTBCDnoxdgQ?pwd=uk6s)
+  (extraction code: `uk6s`)
 
 ### Install
 

@@ -40,7 +40,7 @@ if [[ ! -d "$SOURCE_CKPT" ]]; then
   echo >&2
   echo "This script links checkpoints from an existing MoVT training checkout." >&2
   echo "If you do not have one, download the inference checkpoints (774 MB):" >&2
-  echo "  https://pan.baidu.com/s/1Zn3fAO1a8A3Xj1-nkVfSWw?pwd=pejb  (code: pejb)" >&2
+  echo "  https://pan.baidu.com/s/16YORJ0nqQUXoTBCDnoxdgQ?pwd=uk6s  (code: uk6s)" >&2
   echo "and unpack MoVT-inference-ckpt.zip into this directory; then you can" >&2
   echo "run infer_text_2d3d.py directly and this script is not needed." >&2
   echo >&2
